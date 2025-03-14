@@ -29,7 +29,7 @@ park_shp['year'] = park_shp['year'].astype(int)                             # Ch
 
 
 park = park_shp[['name_label','year', 'acres', 'objectid', 'geometry']]     # Creating new geodataframe
-park = park.sort_values(by ='year', ascending = True)
+park = park.sort_values(by = 'year', ascending = True)
 
 
 for i, row in park.iterrows():                                              # Remove Years = 0 (no year association). Years = 0 are considered extreme since I cannot categorize them correctly, there were like only 3 parks so I decided to leave them out of the study
@@ -99,7 +99,7 @@ for key in park_dictionary:
 ##GRAPHS
 # this bargraph is number of parks constructed using lists and the dictionary above
 title_dict = {'fontsize': 15, 'fontweight' : 'bold'}
-sns.set_theme(style="whitegrid", palette="pastel")
+sns.set_theme(style = "whitegrid", palette = "pastel")
 sns.color_palette("Set2", len(yearinterval_x))
 fig, axy = plt.subplots(figsize=(16, 10))
 sns.barplot(x = yearinterval_x, y = no_parks_y, hue = yearinterval_x, palette = "Set2", ax = axy)
@@ -121,7 +121,7 @@ axy.set_ylabel("Number of Parks Constructed", labelpad = 15)
 axy.set_xlabel("Twenty-Year Intervals", labelpad = 15)
 for p in axy.patches:
     axy.annotate(f'{int(p.get_height())}', 
-                (p.get_x() + p.get_width() / 2., p.get_height()), ha='center', va='center', fontsize=12, color='black', xytext=(0, 10), textcoords='offset points')
+                (p.get_x() + p.get_width() / 2., p.get_height()), ha='center', va='center', fontsize=12, color='black', xytext = (0, 10), textcoords = 'offset points')
 
 ##This dictionary was used to calculate average size of parks
 for key, value in park_dictionary.items(): #in value list
